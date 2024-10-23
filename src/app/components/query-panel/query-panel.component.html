@@ -1,0 +1,102 @@
+<div class="query-panel">
+  <h2>Landscape Trees Query Panel</h2>
+  <div class="filters">
+    <mat-form-field>
+      <mat-label>Scientific Name</mat-label>
+      <input matInput [(ngModel)]="criteria.Sci_Name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Common Name</mat-label>
+      <input matInput [(ngModel)]="criteria.Cmn_Name" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Condition</mat-label>
+      <input matInput [(ngModel)]="criteria.Condition" />
+    </mat-form-field>
+
+    <div class="range-inputs">
+      <mat-form-field>
+        <mat-label>Min Height</mat-label>
+        <input matInput type="number" [(ngModel)]="criteria.HeightRange[0]" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Max Height</mat-label>
+        <input matInput type="number" [(ngModel)]="criteria.HeightRange[1]" />
+      </mat-form-field>
+    </div>
+
+    <div class="range-inputs">
+      <mat-form-field>
+        <mat-label>Min Leaf Area</mat-label>
+        <input matInput type="number" [(ngModel)]="criteria.LeafAreaRange[0]" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Max Leaf Area</mat-label>
+        <input matInput type="number" [(ngModel)]="criteria.LeafAreaRange[1]" />
+      </mat-form-field>
+    </div>
+
+    <button
+      mat-raised-button
+      class="apply-filters-button"
+      (click)="applyFilters()"
+    >
+      Apply Filters
+    </button>
+  </div>
+
+  <div class="results">
+    <h3>Results</h3>
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="Tree_ID">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+        <mat-cell *matCellDef="let tree">{{ tree.Tree_ID }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Sci_Name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Scientific Name</mat-header-cell
+        >
+        <mat-cell *matCellDef="let tree">{{ tree.Sci_Name }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Cmn_Name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Common Name</mat-header-cell
+        >
+        <mat-cell *matCellDef="let tree">{{ tree.Cmn_Name }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Condition">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Condition</mat-header-cell
+        >
+        <mat-cell *matCellDef="let tree">{{ tree.Condition }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Height">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Height</mat-header-cell
+        >
+        <mat-cell *matCellDef="let tree">{{ tree.Height }}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Leaf_Area">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Leaf Area</mat-header-cell
+        >
+        <mat-cell *matCellDef="let tree">{{ tree.Leaf_Area }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <mat-paginator
+      [pageSizeOptions]="[10, 20, 50]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>

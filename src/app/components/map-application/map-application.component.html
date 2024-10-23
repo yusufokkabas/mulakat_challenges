@@ -1,0 +1,127 @@
+<div #viewDiv id="viewDiv"></div>
+
+<mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="Tree_ID">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Tree_ID</mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Tree_ID }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Cmn_Name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Common Name</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Cmn_Name }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Sci_Name">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Scientific Name</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Sci_Name }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Height">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Height</mat-header-cell>
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Height }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="GroundArea">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Ground Area</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.GroundArea }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Leaf_Area">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Leaf Area</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Leaf_Area }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="C_Storage">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Carbon Storage</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.C_Storage }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Crown_Base">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Crown Base</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Crown_Base }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Latitude">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Latitude</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Latitude }}
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="Longitude">
+    <mat-header-cell *matHeaderCellDef mat-sort-header
+      >Longitude</mat-header-cell
+    >
+    <mat-cell
+      *matCellDef="let element"
+      [class.selected-row]="element.Tree_ID === selectedTreeId"
+    >
+      {{ element.Longitude }}
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
+
+<mat-paginator
+  [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+></mat-paginator>

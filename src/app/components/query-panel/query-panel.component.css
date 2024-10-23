@@ -1,0 +1,44 @@
+.query-panel {
+  padding: 20px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.filters > * {
+  max-width: 300px;
+}
+
+.range-inputs {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.range-inputs > * {
+  flex: 1;
+}
+
+.apply-filters-button {
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 200px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+/* Daha küçük ekranlarda form elemanlarının genişliğini ayarlamak için media query */
+@media (max-width: 680px) {
+  .filters > * {
+    flex: 1 1 100%;
+    max-width: none;
+  }
+}
