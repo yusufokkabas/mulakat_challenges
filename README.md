@@ -15,7 +15,7 @@
 
 Genel yapıyı oluştururken her bir soru için ayrı ayrı Angular projesi oluşturup ayağa kaldırmak yerine tek bir proje üstünde çalışmayı tercih ettim. Her bir sorunun cevabını /soru-1, /soru-2 gibi routinglerle verip her bir soru için ayrı componentler üstünde çalıştım. Uygulamayı ilk ayağa kaldırdığınızda ve localhost:4200'e gittiğinizde karşınıza bir nav-bar çıkacaktır. Navbar'da bulunan butonlarla her bir soruya ulaşabilirsiniz. Kurulum için;
 
-1. git clone gelecek buraya
+1. git clone https://github.com/yusufokkabas/mulakat_challenges.git
 2. npm install
 3. npm run start
    adımları yeterli olacaktır.
@@ -23,6 +23,7 @@ Genel yapıyı oluştururken her bir soru için ayrı ayrı Angular projesi olu�
 ## <a name="sorgulama-paneli">Sorgulama Paneli</a>
 
 İlgili component => components/query-panel
+
 url => localhost:4200/soru-1
 
 Bu soruda anladığım, servis içerisindeki en az 5 tane field'ı seçip, bunlar üzerinden bir sorgu paneli oluşturmaktı. Seçtiğim fieldlar Cmn_Name, Sci_Name, Condition, Height ve Leaf_Area oldu. Kullanıcı bir veya birden fazla filtreleme yaparak filtrelediği verileri tabloda görmektedir. Tablo için angular material'in tablo componentini kullandım. Material Tablosunun içinde olan pagination ve sort özellikleri ile client-side pagination ve sort yapılabilmektedir. Kodun daha düzenli ve okunabilir olması adına ağaçlar ve geçilecek filtreler için interface oluşturdum. Apply Filters butonuna basıldığında ilgili filtrelerle URLSearchParams Objesi oluşturularak rest servisine isteğe çıkılmaktadır. Respnsive bir yapı olması adına elementleri flex hale getirdim.
@@ -30,6 +31,7 @@ Bu soruda anladığım, servis içerisindeki en az 5 tane field'ı seçip, bunla
 ## <a name="gorev-yoneticisi-uygulamasi">Görev Yöneticisi Uygulaması</a>
 
 İlgili component => components/task-manager
+
 url => localhost:4200/soru-2
 
 Bu soruda anladığım, bir görev yöneticisinin, elemanlara görev atayabildiği, onaylayabildiği,görüntüleyebildiği ve chart üzerinden dağılım bilgisine erişebildiği bir uygulama oluşturmaktı. Chart için chart.js, table için angular material'in tablo componenti ve form için ise yine angular material form component ve ngForm kullandım. Kodun daha düzenli ve okunabilir olması adına, görevler için bir interface oluşturdum. Yönetici her görev eklediğinde veya bir görevi onayladığında updateChart fonksiyonu ile chart'ı güncelledim. Dökümanda yazan "Yönetici yeni görevler ekleyebilmeli (6 adet görev, 3 farklı kullanıcıya atanmalı)" gereksinim için örnek olması adına 3 farklı kişi ve 3 farklı görev tipi(Low,Medium, ve High Priority). Yönetici istediği kadar görev ekleyebiliyor. Yine responsive bir yapı olması adına html elementleri flex olacak şekilde düzenledim.
@@ -69,9 +71,11 @@ Bu sorudan anladığım, işlevi 3. soru ile aynı olan bir kart uygulaması yap
 ## <a name="harita-uygulamasi">Harita Uygulaması</a>
 
 İlgili component => components/map-application
+
 url => localhost:4200/soru-5
 
 Bu sorudan anladığım, içerisinde featureLayer, tablo ve pop-up barındıran, seçilen feature'ın özet bilgisi ve tabloda detay bilgisinin gösterildiği bir uygulama oluşturmaktı. Önce dökümandaki featureLayer örneğini aynı şekliyle Angular'a geçirdim. Sonrasında ekranı %70 harita ve %30 tablo olacak şekilde bölüp angular material table componenti ile tabloyu oluşturdum. Diğer tablolarda olduğu gibi material tablosunun pagination ve sort özelliğini kullanarak client-side pagination ve sort implemente ettim. Tabloyu doldurmak için, tabloda kullanmak üzere seçtiğim fieldlarla beraber harita üzerindeki verileri featureLayer'ın REST API'ını kullanarak çektim ve tabloyu doldurdum. Pop-up için ise yine arcgis'in kendi popup componenti ile bir template oluşturup featureLayer'a verdim ve herhangi bir feature'a tıklandığında ufak bir tablo ile özet bilgileri içeren bir pop-up oluşturdum. herhangi bir feature seçili olduğunda(pop-up açıldığında), veya seçili olmadığında(pop-up kapandığında) tabloyu güncelleyip ilgili veriyi highlight etmek için yine @arcgis/core'un kütüphanesi olan reactiveUtils'ı kullanarak haritanın propertylerini izledim. watch() fonksiyonu selectedFeatureIndex değiştiğinde veyahut pop-up açılıp kapandığında tetiklenerek tabloyu güncellememi sağladı. selectedItem global değişkeni ile mat-cell elementlerine selected-row classı vererek item'ı turuncuya boyadım ve unshift methodu ile tablonun en üstüne gelmesini sağladım.
+
 watch() fonksiyonunu implemente etmek için faydalandığım kaynak => https://developers.arcgis.com/javascript/latest/sample-code/watch-for-changes-reactiveutils/
 
 Benim sorulardan anladığım, neler yaptığım ve neler kurguladığım genel olarak bu şekildeydi. Vakit ayırdığınız için teşekkür ederim.
