@@ -39,36 +39,48 @@ export class FakeHttpService {
     { id: 7, category: 'Category C7', status: 'active' },
   ];
 
-  getRandomCards<T>(cards: T[], count: number): Observable<T[]> {
-    const shuffled = [...cards].sort(() => 0.5 - Math.random()); // rastgele bir şekilde sortlayıp count kadar slice alıyoruz.
-    return of(shuffled.slice(0, count)).pipe(delay(500)); //Servis isteğini bekliyormuş gibi bir yapı olması adına 0.5 saniyelik bir delay eklendi.
+  // Fisher-Yates Shuffle uygulanarak rastgele sıralama
+  //Kaynak => https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort_random2
+  private fisherYatesShuffle<T>(array: T[]): T[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
   }
-  getRandomCard<T>(cards: T[]): Observable<T> {
-    const shuffled = [...cards].sort(() => 0.5 - Math.random()); // rastgele bir şekilde sortlayıp 0. indexi döndürüyoruz.
-    return of(shuffled[0]);
+
+  getRandomCardsItems<T>(cards: T[], count: number): Observable<T[]> {
+    const shuffled = this.fisherYatesShuffle(cards);
+    return of(shuffled.slice(0, count)).pipe(delay(500));
+  }
+
+  getRandomCardItem<T>(cards: T[]): Observable<T> {
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    return of(cards[randomIndex]);
   }
 
   getRandomACardItems(count: number = 5): Observable<ACardItem[]> {
-    return this.getRandomCards(this.aCardItems, count);
+    return this.getRandomCardsItems(this.aCardItems, count);
   }
 
   getRandomACardItem(): Observable<ACardItem> {
-    return this.getRandomCard(this.aCardItems);
+    return this.getRandomCardItem(this.aCardItems);
   }
 
   getRandomBCardItems(count: number = 5): Observable<BCardItem[]> {
-    return this.getRandomCards(this.bCardItems, count);
+    return this.getRandomCardsItems(this.bCardItems, count);
   }
 
   getRandomBCardItem(): Observable<BCardItem> {
-    return this.getRandomCard(this.bCardItems);
+    return this.getRandomCardItem(this.bCardItems);
   }
 
   getRandomCCardItems(count: number = 5): Observable<CCardItem[]> {
-    return this.getRandomCards(this.cCardItems, count);
+    return this.getRandomCardsItems(this.cCardItems, count);
   }
 
   getRandomCCardItem(): Observable<CCardItem> {
-    return this.getRandomCard(this.cCardItems);
+    return this.getRandomCardItem(this.cCardItems);
   }
 }

@@ -51,7 +51,9 @@ Bu soruda anladığım, bir görev yöneticisinin, elemanlara görev atayabildi�
 
 url => localhost:4200/soru-3
 
-Bu soruda anladığım, 3 karttan oluşan bir kart uygulamasında, uygulama ayağa kalktığı anda 3 kartın da farklı 5 adet veri ile rastgele bir şekilde doldurulup ekrana gösterilmesiydi. Beklenen yapıya uygun bir şekilde servis, model ve komponentlerimi oluşturdum. Kart için primeng kart komponenti kullandım. /soru-3 route'una gidildiği anda eş zamanlı olarak a,b ve c kartlarındaki ngOnInit fonksiyonu, fake servisteki ilgili fonksiyonu çağırıp kartları doldurmaktadır. Servis tarafında, servisi bekliyormuş hissiyatı yaratmak adına 0.5 saniyelik fake bir delay ekledim(get servislerinde Observable döndürdüğümden dolayı komponentte karşılarken ilgili methoda subscribe oluyorum. Servis methodlarının asenkron olması gerekir).Ekleme ve çıkarma işleri ise kart özelinde pop ve push fonksiyonları ile olmaktadır. Yine responsive bir yapı oluşturmak adına elementleri flex şekilde düzenledim.
+Bu soruda anladığım, 3 karttan oluşan bir kart uygulamasında, uygulama ayağa kalktığı anda 3 kartın da farklı 5 adet veri ile rastgele bir şekilde doldurulup ekrana gösterilmesiydi. Beklenen yapıya uygun bir şekilde servis, model ve komponentlerimi oluşturdum. Kart için primeng kart komponenti kullandım. /soru-3 route'una gidildiği anda eş zamanlı olarak a,b ve c kartlarındaki ngOnInit fonksiyonu, fake servisteki ilgili fonksiyonu çağırıp kartları doldurmaktadır. Rastgele doldurma işlemi için Fisher-Yates Shuffle algoritmasını kullandım. Servis tarafında, servisi bekliyormuş hissiyatı yaratmak adına 0.5 saniyelik fake bir delay ekledim(get servislerinde Observable döndürdüğümden dolayı komponentte karşılarken ilgili methoda subscribe oluyorum. Servis methodlarının asenkron olması gerekir).Ekleme ve çıkarma işleri ise kart özelinde pop ve push fonksiyonları ile olmaktadır. Yine responsive bir yapı oluşturmak adına elementleri flex şekilde düzenledim.
+
+Fisher-Yates Shuffle algoritması için kaynak => https://www.w3schools.com/js/tryit.asp?filename=tryjs_array_sort_random2
 
 ## <a name="kart-uygulamasi-gercek-dunya">Kart Uygulaması Gerçek Dünya</a>
 
